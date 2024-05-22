@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Box, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
+import { TextField, Button, Box, MenuItem, Select, FormControl, InputLabel, Typography } from '@mui/material';
 
 const PurchaseProduct = () => {
     const [products, setProducts] = useState([]);
@@ -33,8 +33,9 @@ const PurchaseProduct = () => {
     };
 
     return (
-        <Box component="form" onSubmit={handleSubmit}>
-            <FormControl fullWidth margin="normal">
+        <Box component="form" onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
+            <Typography variant='h3'>شراء منتج</Typography>
+            <FormControl style={{ width: '40%' }} margin="normal">
                 <InputLabel>اختر المنتج</InputLabel>
                 <Select
                     value={selectedProduct}
@@ -47,14 +48,17 @@ const PurchaseProduct = () => {
                     ))}
                 </Select>
             </FormControl>
+            <br />
             <TextField
                 label="الكمية"
                 type="number"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                fullWidth
+                style={{ width: '40%' }}
                 margin="normal"
             />
+            <br />
+            <br />
             <Button type="submit" variant="contained" color="primary">
                 شراء المنتج
             </Button>

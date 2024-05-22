@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box } from '@mui/material';
+import { TextField, Button, Box, Typography } from '@mui/material';
 
 const CreateProduct = ({ onCreateProduct }) => {
     const [name, setName] = useState('');
@@ -28,24 +28,28 @@ const CreateProduct = ({ onCreateProduct }) => {
     };
 
     return (
-        <Box component="form" onSubmit={handleSubmit}>
+        <Box component="form" onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
+            <Typography variant='h3'> تعريف منتج</Typography>
             <TextField
                 label="Product Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                fullWidth
+                style={{ width: '40%' }}
                 margin="normal"
             />
+            <br />
             <TextField
                 label="Quantity"
                 type="number"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                fullWidth
+                style={{ width: '40%' }}
                 margin="normal"
             />
+            <br />
+            <br />
             <Button type="submit" variant="contained" color="primary">
-                Create Product
+                انشاء منتج
             </Button>
         </Box>
     );

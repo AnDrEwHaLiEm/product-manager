@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const Database = require('better-sqlite3');
 
-const dbPath = path.resolve(__dirname, 'database.sqlite');
+const dbPath = path.join(process.resourcesPath, './database.db');
 console.log("=========================================");
 console.log({ dbPath });
 console.log("=========================================");
@@ -18,7 +18,14 @@ if (!fs.existsSync(dbPath)) {
     }
 }
 
-const db = new Database(dbPath);
+let db;
+try {
+    db = new Database(dbPath);
+} catch (error) {
+    console.log("===========================================");
+    console.log(error);
+    console.log("===========================================");
+}
 
 
 // Create the table if it doesn't exist

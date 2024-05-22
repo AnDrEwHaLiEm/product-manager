@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-
+const url = require("url")
 const appPath = app.getAppPath();
 const Database = require(path.join(appPath, 'src', 'database.js'));
 
@@ -16,8 +16,20 @@ function createWindow() {
       enableRemoteModule: false,
     },
   });
+  const appURL = app.isPackaged
+    ? url.format({
+      pathname: path.join(__dirname, "index.html"),
+      protocol: "file:",
+      slashes: true,
+    })
+    : "http://localhost:3000";
+  console.log(appURL);
+  mainWindow.loadURL(appURL)
 
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  // Open the DevTools.
+  if (!app.isPackaged) {
+    mainWindow.webContents.openDevTools()
+  }
 
   mainWindow.on('closed', () => {
     mainWindow = null;

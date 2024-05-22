@@ -27,17 +27,25 @@ const App = () => {
     <Box display="flex">
       <Box width="200px" bgcolor="#f4f4f4" p={2}>
         <Button onClick={() => setActiveSection('create-product')} fullWidth variant="contained">
-          Create Product
+          تعريف منتج
         </Button>
+        <br />
+        <br />
         <Button onClick={() => setActiveSection('purchase-product')} fullWidth variant="contained">
-          Purchase Product
+          شراء منتج
         </Button>
+        <br />
+        <br />
         <Button onClick={() => setActiveSection('sell-product')} fullWidth variant="contained">
-          Sell Product
+          بيع منتج
         </Button>
+        <br />
+        <br />
         <Button onClick={() => setActiveSection('view-products')} fullWidth variant="contained">
-          View Products
+          رؤية جميع المنتجات
         </Button>
+        <br />
+        <br />
       </Box>
       <Box flexGrow={1} p={2}>
         {renderSection()}
